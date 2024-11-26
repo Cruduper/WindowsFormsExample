@@ -21,14 +21,18 @@ namespace EmployeeList
             string id = textBoxID.Text;
             string address = textBoxAddress.Text;
             string phone = textBoxPhone.Text;
+            string jobTitle = comboBoxJobTitle.Text;
 
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(id))
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(id) || comboBoxJobTitle.SelectedIndex == -1)
             {
-                MessageBox.Show("Please enter both name and ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string extraMessage;
+                extraMessage = (comboBoxJobTitle.SelectedIndex == -1) ? "No Job Title given. " : "";
+
+                MessageBox.Show($"Please enter input for all fields. {extraMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            employees.Add(new Employee { Name = name, ID = id, Address = address, Phone = phone });
+            employees.Add(new Employee { Name = name, ID = id, JobTitle = jobTitle, Address = address, Phone = phone });
             clearEmployeeFields();
             MessageBox.Show("Employee added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -44,7 +48,7 @@ namespace EmployeeList
             string employeeList = "Current Employees:\n";
             foreach (var employee in employees)
             {
-                employeeList += $"Name: {employee.Name}, ID: {employee.ID}, Address: {employee.Address}, Phone: {employee.Phone}\n";
+                employeeList += $" Name: {employee.Name}\n Job: {employee.JobTitle}\n ID: {employee.ID}\n Address: {employee.Address}\n Phone: {employee.Phone}\n\n";
             }
 
             MessageBox.Show(employeeList, "Employee List", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,6 +60,13 @@ namespace EmployeeList
             textBoxID.Clear();
             textBoxAddress.Clear();
             textBoxPhone.Clear();
+            comboBoxJobTitle.SelectedIndex = -1;
+            comboBoxJobTitle.Text = "Select Job Title...";
+        }
+
+        private void comboBoxJobTitle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
@@ -65,5 +76,6 @@ namespace EmployeeList
         public string ID { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+        public string JobTitle { get; set; }
     }
 }

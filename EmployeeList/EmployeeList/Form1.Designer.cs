@@ -5,10 +5,16 @@
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxID;
-        private System.Windows.Forms.Button buttonAddEmployee;
-        private System.Windows.Forms.Button buttonViewEmployees;
+        private System.Windows.Forms.TextBox textBoxAddress;
+        private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.ComboBox comboBoxJobTitle;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.Label labelAddress;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.Label labelJobTitle;
+        private System.Windows.Forms.Button buttonAddEmployee;
+        private System.Windows.Forms.Button buttonViewEmployees;
 
         protected override void Dispose(bool disposing)
         {
@@ -23,20 +29,22 @@
         {
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxID = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.comboBoxJobTitle = new System.Windows.Forms.ComboBox();
             this.buttonAddEmployee = new System.Windows.Forms.Button();
             this.buttonViewEmployees = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Label();
             this.labelID = new System.Windows.Forms.Label();
             this.labelAddress = new System.Windows.Forms.Label();
             this.labelPhone = new System.Windows.Forms.Label();
-            this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.labelJobTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(133, 37);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(265, 22);
             this.textBoxName.TabIndex = 0;
@@ -44,15 +52,46 @@
             // textBoxID
             // 
             this.textBoxID.Location = new System.Drawing.Point(133, 86);
-            this.textBoxID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxID.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(265, 22);
             this.textBoxID.TabIndex = 1;
             // 
+            // textBoxAddress
+            // 
+            this.textBoxAddress.Location = new System.Drawing.Point(133, 176);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(265, 22);
+            this.textBoxAddress.TabIndex = 9;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(133, 226);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(265, 22);
+            this.textBoxPhone.TabIndex = 10;
+            // 
+            // comboBoxJobTitle
+            // 
+            this.comboBoxJobTitle.FormattingEnabled = true;
+            this.comboBoxJobTitle.Items.AddRange(new object[] {
+            "Dishwasher",
+            "Cashier",
+            "Cook",
+            "Driver",
+            "Supervisor",
+            "Manager"});
+            this.comboBoxJobTitle.Location = new System.Drawing.Point(133, 132);
+            this.comboBoxJobTitle.Name = "comboBoxJobTitle";
+            this.comboBoxJobTitle.Size = new System.Drawing.Size(265, 24);
+            this.comboBoxJobTitle.TabIndex = 11;
+            this.comboBoxJobTitle.Text = "Select Job Title";
+            this.comboBoxJobTitle.SelectedIndexChanged += new System.EventHandler(this.comboBoxJobTitle_SelectedIndexChanged);
+            // 
             // buttonAddEmployee
             // 
             this.buttonAddEmployee.Location = new System.Drawing.Point(133, 288);
-            this.buttonAddEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddEmployee.Name = "buttonAddEmployee";
             this.buttonAddEmployee.Size = new System.Drawing.Size(133, 37);
             this.buttonAddEmployee.TabIndex = 2;
@@ -63,7 +102,7 @@
             // buttonViewEmployees
             // 
             this.buttonViewEmployees.Location = new System.Drawing.Point(280, 288);
-            this.buttonViewEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonViewEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.buttonViewEmployees.Name = "buttonViewEmployees";
             this.buttonViewEmployees.Size = new System.Drawing.Size(133, 37);
             this.buttonViewEmployees.TabIndex = 3;
@@ -109,46 +148,40 @@
             this.labelPhone.TabIndex = 8;
             this.labelPhone.Text = "Phone #";
             // 
-            // textBoxAddress
+            // labelJobTitle
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(133, 176);
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(265, 22);
-            this.textBoxAddress.TabIndex = 9;
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Location = new System.Drawing.Point(133, 226);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(265, 22);
-            this.textBoxPhone.TabIndex = 10;
+            this.labelJobTitle.AutoSize = true;
+            this.labelJobTitle.Location = new System.Drawing.Point(40, 135);
+            this.labelJobTitle.Name = "labelJobTitle";
+            this.labelJobTitle.Size = new System.Drawing.Size(59, 16);
+            this.labelJobTitle.TabIndex = 6;
+            this.labelJobTitle.Text = "Job Title";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 360);
+            this.Controls.Add(this.comboBoxJobTitle);
             this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.textBoxAddress);
             this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.labelAddress);
+            this.Controls.Add(this.labelJobTitle);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.buttonViewEmployees);
             this.Controls.Add(this.buttonAddEmployee);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.textBoxName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Employee List";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-        private System.Windows.Forms.Label labelAddress;
-        private System.Windows.Forms.Label labelPhone;
-        private System.Windows.Forms.TextBox textBoxAddress;
-        private System.Windows.Forms.TextBox textBoxPhone;
+ 
     }
 }
 
