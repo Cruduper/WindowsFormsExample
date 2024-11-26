@@ -19,6 +19,8 @@ namespace EmployeeList
         {
             string name = textBoxName.Text;
             string id = textBoxID.Text;
+            string address = textBoxAddress.Text;
+            string phone = textBoxPhone.Text;
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(id))
             {
@@ -26,9 +28,8 @@ namespace EmployeeList
                 return;
             }
 
-            employees.Add(new Employee { Name = name, ID = id });
-            textBoxName.Clear();
-            textBoxID.Clear();
+            employees.Add(new Employee { Name = name, ID = id, Address = address, Phone = phone });
+            clearEmployeeFields();
             MessageBox.Show("Employee added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -43,10 +44,18 @@ namespace EmployeeList
             string employeeList = "Current Employees:\n";
             foreach (var employee in employees)
             {
-                employeeList += $"Name: {employee.Name}, ID: {employee.ID}\n";
+                employeeList += $"Name: {employee.Name}, ID: {employee.ID}, Address: {employee.Address}, Phone: {employee.Phone}\n";
             }
 
             MessageBox.Show(employeeList, "Employee List", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void clearEmployeeFields()
+        {
+            textBoxName.Clear();
+            textBoxID.Clear();
+            textBoxAddress.Clear();
+            textBoxPhone.Clear();
         }
     }
 
@@ -54,5 +63,7 @@ namespace EmployeeList
     {
         public string Name { get; set; }
         public string ID { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
     }
 }
